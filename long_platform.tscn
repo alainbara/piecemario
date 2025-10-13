@@ -7,6 +7,7 @@ size = Vector2(256.25, 72.5)
 
 [node name="Long platform" type="StaticBody2D"]
 position = Vector2(217, -467)
+collision_layer = 4
 collision_mask = 2
 metadata/_edit_group_ = true
 
@@ -20,4 +21,3 @@ region_rect = Rect2(15.980169, 0.4134264, 32.026703, 8.306638)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-88.125, 503.75)
 shape = SubResource("RectangleShape2D_5f01h")
-disabled = true

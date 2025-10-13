@@ -23,7 +23,7 @@ position = Vector2(219, -47)
 position = Vector2(587, 343)
 
 [node name="player" parent="." instance=ExtResource("4_7mycd")]
-position = Vector2(69, 381)
+position = Vector2(69, 384)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("1_1bvp3")]
-position = Vector2(214, 367)
+position = Vector2(214, 363)

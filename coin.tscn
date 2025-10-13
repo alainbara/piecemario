@@ -100,14 +100,14 @@ size = Vector2(10, 10)
 
 [node name="Coin" type="StaticBody2D"]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 2
 script = ExtResource("1_0t63x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 36)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_s5w7y")
-frame_progress = 0.4716552
+frame_progress = 0.24354099
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 36)
