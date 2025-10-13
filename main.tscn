@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhuc0o08kuiqc"]
+
+[ext_resource type="PackedScene" uid="uid://cbthifvypxfou" path="res://coin.tscn" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c8fuclxi3nuks" path="res://long_platform.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bdrylpln2adgf" path="res://small_platform.tscn" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://ki11c0x6h8op" path="res://player.tscn" id="4_7mycd"]
+
+[node name="Main" type="Node"]
+
+[node name="Coin" parent="." instance=ExtResource("1_1bvp3")]
+position = Vector2(143, 363)
+
+[node name="Small Platform2" parent="." instance=ExtResource("2_lquwl")]
+position = Vector2(797, 340)
+
+[node name="Long platform2" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(475, -47)
+
+[node name="Long platform" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(219, -47)
+
+[node name="Small Platform" parent="." instance=ExtResource("2_lquwl")]
+position = Vector2(587, 343)
+
+[node name="player" parent="." instance=ExtResource("4_7mycd")]
+position = Vector2(69, 381)
+
+[node name="RigidBody2D" parent="." instance=ExtResource("1_1bvp3")]
+position = Vector2(214, 367)
