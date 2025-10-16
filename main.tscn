@@ -7,8 +7,11 @@
 
 [node name="Main" type="Node"]
 
+[node name="Coin2" parent="." instance=ExtResource("1_1bvp3")]
+position = Vector2(247, 363)
+
 [node name="Coin" parent="." instance=ExtResource("1_1bvp3")]
-position = Vector2(143, 363)
+position = Vector2(152, 362)
 
 [node name="Small Platform2" parent="." instance=ExtResource("2_lquwl")]
 position = Vector2(797, 340)
@@ -25,5 +28,5 @@ position = Vector2(587, 343)
 [node name="player" parent="." instance=ExtResource("4_7mycd")]
 position = Vector2(69, 384)
 
-[node name="RigidBody2D" parent="." instance=ExtResource("1_1bvp3")]
-position = Vector2(214, 363)
+[connection signal="coin_picked_up" from="Coin2" to="player" method="_on_coin_picked_up"]
+[connection signal="coin_picked_up" from="Coin" to="player" method="_on_coin_picked_up"]

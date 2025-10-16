@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var speed: int = 250
+@export var speed: int = 150
 @export var acceleration: int = 5
-@export var jump_speed: int = -speed * 2
+@export var jump_speed: int = -speed * 3
 @export var gravity: int = speed * 5
 
 # Called when the node enters the scene tree for the first time.
@@ -20,8 +20,10 @@ func _process(delta: float) -> void:
 
 func handle_input() -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		$JumpSound.play()
 		velocity.y = jump_speed
 	var direction = Input.get_axis("ui_left", "ui_right")
+	$AnimatedSprite2D.flip_h = velocity.x < 0
 	
 	if direction == 0:
 		velocity.x = move_toward(velocity.x, 0, acceleration)
@@ -40,4 +42,6 @@ func update_animation():
 	$AnimatedSprite2D.animation = "run"
 	$AnimatedSprite2D.play()
 	
-	
+func _on_coin_picked_up(coin) -> void:
+	coin.queue_free()
+	$CoinSound.play()

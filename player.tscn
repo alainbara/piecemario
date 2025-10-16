@@ -1,7 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://ki11c0x6h8op"]
+[gd_scene load_steps=35 format=3 uid="uid://ki11c0x6h8op"]
 
 [ext_resource type="Texture2D" uid="uid://cvjoj78irtebx" path="res://art/brackeys_platformer_assets/sprites/knight.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dfgodew4yuyed" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="AudioStream" uid="uid://denpuoc124d45" path="res://art/brackeys_platformer_assets/sounds/jump.wav" id="3_i3pqv"]
+[ext_resource type="AudioStream" uid="uid://d31qof1x6acvg" path="res://art/brackeys_platformer_assets/sounds/coin.wav" id="4_hqtel"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("1_4flbx")
@@ -132,7 +134,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -161,7 +163,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"roll",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -214,7 +216,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
@@ -229,8 +231,20 @@ script = ExtResource("1_onrkg")
 position = Vector2(2, -1)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_634y6")
-animation = &"run"
+animation = &"roll"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.25, 6.75)
 shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="PlayerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(1.25, 6.75)
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_i3pqv")
+
+[node name="CoinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hqtel")

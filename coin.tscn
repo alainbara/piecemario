@@ -1,7 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cbthifvypxfou"]
+[gd_scene load_steps=18 format=3 uid="uid://cbthifvypxfou"]
 
 [ext_resource type="Script" uid="uid://c0tfg6nggbopa" path="res://coin.gd" id="1_0t63x"]
 [ext_resource type="Texture2D" uid="uid://dxxrtmm74yjwq" path="res://art/brackeys_platformer_assets/sprites/coin.png" id="1_d5gmh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t63x"]
+size = Vector2(10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0t63x"]
 atlas = ExtResource("1_d5gmh")
@@ -96,12 +99,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_relgi"]
-size = Vector2(10, 10)
+size = Vector2(10, 10.083334)
 
 [node name="Coin" type="StaticBody2D"]
-collision_layer = 4
-collision_mask = 2
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_0t63x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 36)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_0t63x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 36)
@@ -109,7 +117,11 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_s5w7y")
 frame_progress = 0.24354099
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 36)
+[node name="CoinArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinArea"]
+position = Vector2(-7.1525574e-07, 36.125)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_relgi")
+
+[connection signal="area_entered" from="CoinArea" to="." method="_on_coin_entered"]
