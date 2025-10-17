@@ -6,12 +6,12 @@ signal state_changed()
 ## Etat initial
 @export var initial_state: State = null
 
-## Etat actuel
+## Etat actuel, si aucun n'est sélectionné, c'est le premier état de la liste
 @onready var state: State = (func get_inital_state() -> State:
 	return initial_state if initial_state != null else get_child(0)
 	).call()
 
-# Called when the node enters the scene tree for the first time.
+# Appelé quand le noeud arrive pour la première fois dans l'arbre
 func _ready() -> void:
 	# On se connecte au signal nommé "finished" de chaque état pour changer d'état
 	for state_node: State in find_children("*", "State"):
@@ -35,6 +35,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
+	print(target_state_path)
 	if not has_node(target_state_path):
 		printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it does not exist.")
 		return

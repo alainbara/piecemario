@@ -1,0 +1,126 @@
+[gd_scene load_steps=20 format=3 uid="uid://bgd8yxoe64py3"]
+
+[ext_resource type="Script" uid="uid://d0qmpsaithkjo" path="res://scenes/character/finite_state_character/finite_state_character.gd" id="1_wg7nv"]
+[ext_resource type="Texture2D" uid="uid://bet0p2ok6gklk" path="res://art/free pixelart tiny heroes/1 Pink_Monster/Pink_Monster_Idle_4.png" id="2_fab2u"]
+[ext_resource type="Texture2D" uid="uid://bdabu5m37gd1n" path="res://art/free pixelart tiny heroes/1 Pink_Monster/Pink_Monster_Run_6.png" id="3_bvodo"]
+[ext_resource type="Script" uid="uid://ccdo4je0e8x6m" path="res://scenes/character/finite_state_character/character_state_machine.gd" id="3_xkcjv"]
+[ext_resource type="Script" uid="uid://dwy6hpn61da3c" path="res://scenes/character/finite_state_character/states/idle.gd" id="4_fab2u"]
+[ext_resource type="Script" uid="uid://cx4d5xavxg4qj" path="res://scenes/character/finite_state_character/states/running.gd" id="6_idq4h"]
+[ext_resource type="Script" uid="uid://cgb085nefwvjl" path="res://scenes/character/finite_state_character/states/jumping.gd" id="7_io477"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omkkt"]
+atlas = ExtResource("2_fab2u")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpsq2"]
+atlas = ExtResource("2_fab2u")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2stfm"]
+atlas = ExtResource("2_fab2u")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh3tu"]
+atlas = ExtResource("2_fab2u")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idq4h"]
+atlas = ExtResource("3_bvodo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io477"]
+atlas = ExtResource("3_bvodo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am7fy"]
+atlas = ExtResource("3_bvodo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ng3o"]
+atlas = ExtResource("3_bvodo")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ygwi"]
+atlas = ExtResource("3_bvodo")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsysa"]
+atlas = ExtResource("3_bvodo")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_80h55"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omkkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpsq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2stfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh3tu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idq4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io477")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am7fy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ng3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ygwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsysa")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ye63n"]
+height = 42.0
+
+[node name="FiniteStateCharacter" type="CharacterBody2D"]
+collision_mask = 7
+script = ExtResource("1_wg7nv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_80h55")
+animation = &"jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -5)
+shape = SubResource("CapsuleShape2D_ye63n")
+
+[node name="CharacterStateMachine" type="Node" parent="."]
+script = ExtResource("3_xkcjv")
+
+[node name="IDLE" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("4_fab2u")
+
+[node name="RUNNING" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("6_idq4h")
+
+[node name="JUMPING" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("7_io477")
