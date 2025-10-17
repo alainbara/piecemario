@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bhuc0o08kuiqc"]
 
-[ext_resource type="PackedScene" uid="uid://cbthifvypxfou" path="res://coin.tscn" id="1_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://c8fuclxi3nuks" path="res://long_platform.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bdrylpln2adgf" path="res://small_platform.tscn" id="2_lquwl"]
-[ext_resource type="PackedScene" uid="uid://ki11c0x6h8op" path="res://player.tscn" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://cbthifvypxfou" path="res://scenes/collectibles/coin/coin.tscn" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c8fuclxi3nuks" path="res://scenes/layouts/long_platform.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bdrylpln2adgf" path="res://scenes/layouts/small_platform.tscn" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://ki11c0x6h8op" path="res://scenes/character/player.tscn" id="4_7mycd"]
 
 [node name="Main" type="Node"]
 

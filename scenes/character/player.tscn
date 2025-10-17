@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://ki11c0x6h8op"]
 
 [ext_resource type="Texture2D" uid="uid://cvjoj78irtebx" path="res://art/brackeys_platformer_assets/sprites/knight.png" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://dfgodew4yuyed" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://dfgodew4yuyed" path="res://scenes/character/player.gd" id="1_onrkg"]
 [ext_resource type="AudioStream" uid="uid://denpuoc124d45" path="res://art/brackeys_platformer_assets/sounds/jump.wav" id="3_i3pqv"]
 [ext_resource type="AudioStream" uid="uid://d31qof1x6acvg" path="res://art/brackeys_platformer_assets/sounds/coin.wav" id="4_hqtel"]
 

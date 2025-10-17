@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-@export var speed: int = 150
+
+
+@export var speed: int = 300
 @export var acceleration: int = 5
 @export var jump_speed: int = -speed * 3
 @export var gravity: int = speed * 5
@@ -25,11 +27,19 @@ func handle_input() -> void:
 	var direction = Input.get_axis("ui_left", "ui_right")
 	$AnimatedSprite2D.flip_h = velocity.x < 0
 	
+	if Input.is_action_just_pressed("roll"):
+		roll()
+	
 	if direction == 0:
 		velocity.x = move_toward(velocity.x, 0, acceleration)
 	else:
 		velocity.x = move_toward(velocity.x, speed * direction, acceleration)
+	
 		
+func roll():
+	$AnimatedSprite2D.animation = "roll"
+	$AnimatedSprite2D.play()
+	
 func update_movement(delta: float):
 	velocity.y += gravity * delta
 	
