@@ -3,6 +3,8 @@ class_name FiniteStateCharacterState extends State
 const IDLE = "IDLE"
 const RUNNING = "RUNNING"
 const JUMPING = "JUMPING"
+const FALLING = "FALLING"
+const GLIDING = "GLIDING"
 
 var player: FiniteStateCharacter
 

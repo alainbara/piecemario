@@ -107,21 +107,19 @@ collision_mask = 0
 script = ExtResource("1_0t63x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 36)
-scale = Vector2(3, 3)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_0t63x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 36)
-scale = Vector2(3, 3)
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_s5w7y")
 frame_progress = 0.24354099
 
 [node name="CoinArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoinArea"]
-position = Vector2(-7.1525574e-07, 36.125)
-scale = Vector2(3, 3)
+position = Vector2(-7.1525574e-07, 0.125)
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_relgi")
 
 [connection signal="area_entered" from="CoinArea" to="." method="_on_coin_entered"]

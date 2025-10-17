@@ -1,12 +1,18 @@
-[gd_scene load_steps=20 format=3 uid="uid://bgd8yxoe64py3"]
+[gd_scene load_steps=42 format=3 uid="uid://bgd8yxoe64py3"]
 
 [ext_resource type="Script" uid="uid://d0qmpsaithkjo" path="res://scenes/character/finite_state_character/finite_state_character.gd" id="1_wg7nv"]
 [ext_resource type="Texture2D" uid="uid://bet0p2ok6gklk" path="res://art/free pixelart tiny heroes/1 Pink_Monster/Pink_Monster_Idle_4.png" id="2_fab2u"]
+[ext_resource type="Texture2D" uid="uid://bmlc6xvn87ofw" path="res://art/free pixelart tiny heroes/1 Pink_Monster/Pink_Monster_Jump_8.png" id="3_am7fy"]
 [ext_resource type="Texture2D" uid="uid://bdabu5m37gd1n" path="res://art/free pixelart tiny heroes/1 Pink_Monster/Pink_Monster_Run_6.png" id="3_bvodo"]
 [ext_resource type="Script" uid="uid://ccdo4je0e8x6m" path="res://scenes/character/finite_state_character/character_state_machine.gd" id="3_xkcjv"]
 [ext_resource type="Script" uid="uid://dwy6hpn61da3c" path="res://scenes/character/finite_state_character/states/idle.gd" id="4_fab2u"]
+[ext_resource type="Texture2D" uid="uid://l1jltgbgxvcx" path="res://art/free pixelart tiny heroes/1 Pink_Monster/Double_Jump_Dust_5.png" id="5_2koux"]
 [ext_resource type="Script" uid="uid://cx4d5xavxg4qj" path="res://scenes/character/finite_state_character/states/running.gd" id="6_idq4h"]
 [ext_resource type="Script" uid="uid://cgb085nefwvjl" path="res://scenes/character/finite_state_character/states/jumping.gd" id="7_io477"]
+[ext_resource type="AudioStream" uid="uid://denpuoc124d45" path="res://art/brackeys_platformer_assets/sounds/jump.wav" id="9_7ygwi"]
+[ext_resource type="Script" uid="uid://bekdar5uu7f7" path="res://scenes/character/finite_state_character/states/falling.gd" id="9_vsysa"]
+[ext_resource type="AudioStream" uid="uid://d31qof1x6acvg" path="res://art/brackeys_platformer_assets/sounds/coin.wav" id="10_vsysa"]
+[ext_resource type="Script" uid="uid://ct7qlyj4nrn64" path="res://scenes/character/finite_state_character/states/gliding.gd" id="11_uuyf1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_omkkt"]
 atlas = ExtResource("2_fab2u")
@@ -23,6 +29,38 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wh3tu"]
 atlas = ExtResource("2_fab2u")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2koux"]
+atlas = ExtResource("3_am7fy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuyf1"]
+atlas = ExtResource("3_am7fy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awrek"]
+atlas = ExtResource("3_am7fy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pms6t"]
+atlas = ExtResource("3_am7fy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvkqf"]
+atlas = ExtResource("3_am7fy")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj38i"]
+atlas = ExtResource("3_am7fy")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rwyr"]
+atlas = ExtResource("3_am7fy")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bgph"]
+atlas = ExtResource("3_am7fy")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idq4h"]
 atlas = ExtResource("3_bvodo")
@@ -67,7 +105,31 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2koux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuyf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awrek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pms6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvkqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj38i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rwyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bgph")
+}],
 "loop": true,
 "name": &"jump",
 "speed": 5.0
@@ -96,21 +158,83 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_aji77"]
+atlas = ExtResource("5_2koux")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa0p8"]
+atlas = ExtResource("5_2koux")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jto3w"]
+atlas = ExtResource("5_2koux")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2fti"]
+atlas = ExtResource("5_2koux")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj25g"]
+atlas = ExtResource("5_2koux")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwygw"]
+atlas = ExtResource("5_2koux")
+region = Rect2(130, 0, 13, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vsysa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aji77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa0p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jto3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2fti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj25g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwygw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ye63n"]
-height = 42.0
+radius = 4.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ygwi"]
+radius = 4.0
+height = 14.0
 
 [node name="FiniteStateCharacter" type="CharacterBody2D"]
 collision_mask = 7
 script = ExtResource("1_wg7nv")
+gravity = 9000.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_80h55")
-animation = &"jump"
+animation = &"run"
+
+[node name="DoubleJumpAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vsysa")
+frame = 5
+frame_progress = 1.0
+speed_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -5)
+position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_ye63n")
 
 [node name="CharacterStateMachine" type="Node" parent="."]
@@ -124,3 +248,21 @@ script = ExtResource("6_idq4h")
 
 [node name="JUMPING" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("7_io477")
+
+[node name="FALLING" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("9_vsysa")
+
+[node name="GLIDING" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("11_uuyf1")
+
+[node name="PlayerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_7ygwi")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_7ygwi")
+
+[node name="CoinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_vsysa")

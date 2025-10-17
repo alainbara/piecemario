@@ -1,4 +1,4 @@
-extends StaticBody2D
+class_name Coin extends StaticBody2D
 signal coin_picked_up
 
 
@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$AnimatedSprite2D.animation = "default"
 	$AnimatedSprite2D.play()
 

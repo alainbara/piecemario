@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7bvjfc85n4rr"]
+
+[ext_resource type="Texture2D" uid="uid://7hyykfatnk4" path="res://art/brackeys_platformer_assets/sprites/platforms.png" id="1_wufig"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unpf6"]
+size = Vector2(10, 32)
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5707964
+texture = ExtResource("1_wufig")
+region_enabled = true
+region_rect = Rect2(16.01371, 0, 32.015274, 9.027345)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_unpf6")
