@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cbthifvypxfou" path="res://scenes/collectibles/coin/coin.tscn" id="3_a6j3s"]
 [ext_resource type="Texture2D" uid="uid://ds0r2h4s20s8f" path="res://art/brackeys_platformer_assets/sprites/world_tileset.png" id="4_hb460"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0okgp"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a6j3s"]
 texture = ExtResource("4_hb460")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -159,12 +159,19 @@ texture = ExtResource("4_hb460")
 
 [sub_resource type="TileSet" id="TileSet_fwgtu"]
 physics_layer_0/collision_layer = 4
-sources/0 = SubResource("TileSetAtlasSource_0okgp")
+sources/0 = SubResource("TileSetAtlasSource_a6j3s")
 
 [node name="Level1" type="Node"]
 script = ExtResource("1_h43yx")
 
 [node name="Layout" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Layout"]
+offset_left = -88.0
+offset_top = -40.0
+offset_right = 296.0
+offset_bottom = 152.0
+color = Color(0, 0.7647059, 1, 1)
 
 [node name="TileMap" type="TileMap" parent="Layout"]
 tile_set = SubResource("TileSet_fwgtu")
