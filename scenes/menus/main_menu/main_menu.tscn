@@ -191,4 +191,5 @@ offset_right = 448.0
 offset_bottom = 232.0
 text = "QUITTER"
 
+[connection signal="pressed" from="PlayButton" to="." method="go_to_level_selector"]
 [connection signal="pressed" from="QuitButton" to="." method="quitter"]

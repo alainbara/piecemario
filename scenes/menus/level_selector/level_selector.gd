@@ -4,12 +4,15 @@ var LEVELS_PATH := "res://scenes/levels/"
 
 var levels_list: Dictionary[String, String]
 
+var level_container: GridContainer
+
 #TODO :  AFFICHER LES NIVEAUX + GERER LA TRANSI ENTRE LES MENUS!
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	level_container = $Node2/LevelContainer
 	loadLevelsList()
-	print(levels_list)
+	displayLevelsList()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,7 +36,19 @@ func loadLevelsList():
 		if not file_scene.is_empty():
 			levels_list[folder] = file_scene.get(0)
 			
+			
+func displayLevelsList() -> void:
+	for level in levels_list:
+		var level_folder = level
+		var level_file = levels_list[level]
+		print(level_folder, level_file)
+		var button := Button.new()
+		button.text = level_folder
+		button.pressed.connect(go_to_level.bind(level_folder, level_file))
+		level_container.add_child(button)
 	
+func go_to_level(level_folder: String, level_file: String):
+	get_tree().change_scene_to_file(LEVELS_PATH+level_folder+"/"+level_file)
 	
 
 	
