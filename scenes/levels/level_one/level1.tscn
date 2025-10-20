@@ -195,7 +195,7 @@ gravity = 3200.0
 
 [node name="Camera2D" type="Camera2D" parent="FiniteStateCharacter"]
 position = Vector2(32, -16)
-zoom = Vector2(5, 5)
+zoom = Vector2(3, 3)
 
 [connection signal="coin_picked_up" from="Coins/Coin" to="FiniteStateCharacter" method="_on_coin_picked_up"]
 [connection signal="coin_picked_up" from="Coins/Coin2" to="FiniteStateCharacter" method="_on_coin_picked_up"]
