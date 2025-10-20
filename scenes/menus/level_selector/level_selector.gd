@@ -6,11 +6,14 @@ var levels_list: Dictionary[String, String]
 
 var level_container: GridContainer
 
+var dict : Dictionary
+
 #TODO :  AFFICHER LES NIVEAUX + GERER LA TRANSI ENTRE LES MENUS!
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	level_container = $Node2/LevelContainer
+	dict = SaveManager.load_game()
 	loadLevelsList()
 	displayLevelsList()
 
@@ -45,6 +48,9 @@ func displayLevelsList() -> void:
 		var button := Button.new()
 		button.text = level_folder
 		button.pressed.connect(go_to_level.bind(level_folder, level_file))
+		if dict[level_folder]:
+			button.add_theme_color_override("Normal", Color(255, 0, 0))
+			
 		level_container.add_child(button)
 	
 func go_to_level(level_folder: String, level_file: String):
