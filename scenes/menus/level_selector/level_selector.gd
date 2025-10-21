@@ -8,12 +8,15 @@ var level_container: GridContainer
 
 var dict : Dictionary
 
+var succeed_theme : Theme
+
 #TODO :  AFFICHER LES NIVEAUX + GERER LA TRANSI ENTRE LES MENUS!
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	level_container = $Node2/LevelContainer
 	dict = SaveManager.load_game()
+	
 	loadLevelsList()
 	displayLevelsList()
 
@@ -49,7 +52,9 @@ func displayLevelsList() -> void:
 		button.text = level_folder
 		button.pressed.connect(go_to_level.bind(level_folder, level_file))
 		if dict[level_folder]:
-			button.add_theme_color_override("Normal", Color(255, 0, 0))
+			button.theme = load(ThemeManager.SUCCEED_BUTTON)
+		else:
+			button.theme = load(ThemeManager.BUTTON)
 			
 		level_container.add_child(button)
 	

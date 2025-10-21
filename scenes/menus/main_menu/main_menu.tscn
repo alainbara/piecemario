@@ -187,10 +187,11 @@ text = "JOUER
 "
 
 [node name="QuitButton" type="Button" parent="."]
-offset_left = 128.0
+offset_left = 248.0
 offset_top = 192.0
-offset_right = 448.0
+offset_right = 352.0
 offset_bottom = 232.0
+theme = ExtResource("3_gm7d7")
 text = "QUITTER"
 
 [connection signal="pressed" from="PlayButton" to="." method="go_to_level_selector"]
